@@ -1,5 +1,6 @@
 module SatelliteSpots
 
-# Write your package code here.
+using PSFModels
+using Photometry
 
 end
