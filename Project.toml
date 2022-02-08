@@ -1,0 +1,7 @@
+name = "SatelliteSpots"
+uuid = "05d5f3ad-3e1d-4e78-88bc-95e11a320b34"
+authors = ["mileslucas <mdlucas@hawaii.edu> and contributors"]
+version = "0.1.0"
+
+[compat]
+julia = "1.6"
