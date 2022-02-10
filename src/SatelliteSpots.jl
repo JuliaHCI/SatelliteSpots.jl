@@ -128,7 +128,7 @@ function Base.show(io::IO, result::SpotResults)
     std_dist = std(dists; corrected=false, mean=mean_dist)
 
     angs = angles(result, ctr)
-    offsets = map(ang -> mod(ang, 360 / n), angs)
+    offsets = rem.(angs, 360 / n)
     mean_ang = mean(offsets)
     std_ang = std(offsets; corrected=false, mean=mean_ang)
 
