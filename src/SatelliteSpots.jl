@@ -40,8 +40,6 @@ function fit(psfmodel, initial, image::AbstractMatrix; n, r, angle=0, width=20, 
 end
 
 function fit(psfmodel, initial, image::AbstractMatrix, inds; kwargs...)
-    nspots = length(inds)
-
     results = map(inds) do _inds
         cartinds = CartesianIndices(_inds)
         com = center_of_mass(image, cartinds)
