@@ -114,7 +114,15 @@ function photometry(result::SpotResults; factor=0.5)
     end
 end
 
-_aperture(x, y, fwhm, factor=0.5) = CircularAperture(x, y, factor * fwhm)
+function photometry(result::SpotResults, fwhm; factor=0.5)
+    image = full_model(result)
+    map(result.params) do params
+        ap = _aperture(params.x, params.y, fwhm, factor; params...)
+        Photometry.photometry(ap, image).aperture_sum
+    end
+end
+
+_aperture(x, y, fwhm, factor=0.5; kwargs...) = CircularAperture(x, y, factor * fwhm)
 function _aperture(x, y, fwhm::Union{<:AbstractVector,Tuple}, factor=0.5; theta=0, kwargs...)
     EllipticalAperture(x, y, factor * fwhm[1], factor * fwhm[2], theta)
 end
